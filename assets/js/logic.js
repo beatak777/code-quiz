@@ -49,7 +49,7 @@ function displayQuestion() {
                     timer.textContent = time -= 10;
                 }
                 playIncorrectAudio();
-            }
+            } 
             currentQuestionIndex++;
 
             displayQuestions();
