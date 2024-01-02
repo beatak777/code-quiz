@@ -10,7 +10,7 @@ const endScreen = document.querySelector('#end-screen');
 const submit = document.querySelector('#submit');
 const initials = document.querySelector('#initials');
 
-var intervalHandle;
+// var intervalHandle;
 var currentQuestionIndex = 0;
 var time = 60;
 var timerId;
@@ -90,58 +90,9 @@ startButton.addEventListener("click", function () {
 
 
 submit.addEventListener("click", function () {
-    var scoreboard = JSON.parse(localStorage.getItem("score"));
-    if (Array.isArray(scoreboard)) {
-
-    }else {
-        scoreboard = [];
-    }
-    var highscores = {
-        score: time,
-        initials: initials.value
-
-    };
-
-    scoreboard.push(highscores);
-
+    const scoreboard = JSON.parse(localStorage.getItem("score")) || [];
+    scoreboard.push({score: time, initials: initials.value });
     localStorage.setItem("score", JSON.stringify(scoreboard));
     window.location.href = "highscores.html"
     
 })
-// Click the start button:
-// Landing page goes away
-// Timer starts
-// The first question appears (with its answers)
-
-// For each question:
-// User clicks an answer
-// Their choice is compared to the correct answer as stored in the question's object
-// If correct, tell them
-// If incorrect, tell them AND subtract time from the timer
-// Optional: play a sound for correct or incorrect
-// Either way, the question disappears after a few seconds and the next question appears
-
-// After the last question:
-// Timer stops
-// Question disappears
-// Form appears for user to enter their initials
-// Display their score
-
-// User submits form
-// Initials and score get stored in local storage
-// User is taken to the high scores page
-// High scores are listed, sorted highest to lowest
-// User has option to take the quiz again
-
-
-// these are done 
-
-// Set of questions --> array of objects 
-// Each question needs the following:
-// Question text
-// Set of answers
-// Which answer is correct
-
-// Landing page:
-// Explanation of the quiz
-// Start button
