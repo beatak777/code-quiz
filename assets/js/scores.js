@@ -1,6 +1,6 @@
 var highscoresEl = document.querySelector("#highscores");
 var scoreboard = document.createElement("ul");
-var clearScores = document.querySelector("clear");
+var clearScores = document.querySelector("#clear");
 
 function generateLi() {
     scoreboard.innerHTML = "";
@@ -12,9 +12,9 @@ function generateLi() {
         scoreboard.appendChild(item);
     });
 
-    if (userValues.length === 0 ) {
+    if (userValues.length === 0) {
         var noScoresMessage = document.createElement("li");
-        noScoresMessage.innerText = "No high scores yet." ;
+        noScoresMessage.innerText = "No high scores yet.";
         scoreboard.appendChild(noScoresMessage);
     }
     highscoresEl.appendChild(scoreboard);
@@ -26,3 +26,10 @@ clearScores.addEventListener("click", function () {
     localStorage.removeItem("score");
     generateLi();
 });
+
+clearScores.addEventListener("click", function () {
+    localStorage.removeItem("score");
+    generateLi();
+});
+
+generateLi();
