@@ -32,7 +32,7 @@ Overview of the project:
 
 [Link to Deployed Github Page](https://github.com/beatak777/code-quiz)
 
-![Deployed Page Browser View](https://beatak777.github.io/code-quiz/)
+[Deployed Page Browser View](https://beatak777.github.io/code-quiz/)
 
 ![Spanshot of the outcome](screenshot.gif)
 ## <a name='Installation'></a>Installation
