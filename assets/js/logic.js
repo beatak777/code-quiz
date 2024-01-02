@@ -35,9 +35,6 @@ function displayQuestion() {
 
             feedback.innerText = isCorrect ? "Correct!" : "Wrong answer!";
 
-            const audioPath = isCorrect ? "../api-code-quiz/code-quiz/assets/sfx/correct.wav" : "../api-code-quiz/code-quiz/assets/sfx/incorrect.wav";
-            new Audio(audioPath).play();
-
             if (!isCorrect) timer.textContent = time -= 10;
             currentQuestionIndex++;
 
