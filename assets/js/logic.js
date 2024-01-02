@@ -15,17 +15,7 @@ var currentQuestionIndex = 0;
 var time = 60;
 var timerId;
 
-function clockTimer() {
-    time--;
-
-    timer.textContent = time
-    if (time === 0 || currentQuestionIndex === 5) {
-        clearInterval(timerId);
-        quizFinish();
-    }
-}
-
-function displayQuestions() {
+function displayQuestion() {
 
     if (currentQuestionIndex === 5) {
         questionScrn.classList.add("hide");
@@ -34,13 +24,54 @@ function displayQuestions() {
     }
 }
 
-const currentQuestionIndex = questions[currentQuestionIndex];
-
+var currentQuestionIndex = questions[currentQuestionIndex];
 questionTitle.innerText = currentQuestion.title;
 choices.innerHTML = '';
 
+currentQuestion.choices.forEach(function (choice) {
+    const choicesBtn = document.createElement("button");
+    choicesBtn.innerText = choice;
+    choicesBtn.addEventListener("click", function () ) {
+        if (currentQuestion.answer === choice) {
+            feedback.innerText = "Correct!" ;
+            function playCorrectAudio() {
+                var correct = new Audio("../api-code-quiz/code-quiz/assets/sfx/correct.wav");
+                correct.play();
+            }
+            playCorrectAudio();
+        
+        } else {
+            feedback.innerText = "Wrong answer!";
+            function playIncorrectAudio() {
+                var incorrect = new Audio("../api-code-quiz/code-quiz/assets/sfx/incorrect.wav");
+                incorrect.play();
+                timer.textContent = time -= 10;
+            }
+            playIncorrectAudio();
+        }
+        currentQuestionIndex++;
+        displayQuestions();
+    }
+    choices.append(choicesBtn);
 
+})
 
+function clockTimer() {
+    time--;
+
+    timer.textContent = time
+    if (time <= 0 || currentQuestionIndex === 5) {
+        clearInterval(timerId);
+        quizFinish();
+    }
+}
+
+startBtn.addEventListener("click", function () {
+startScrn.classList.add("hide");
+questionScrn.classList.remove("hide");
+displayQuestions();
+timerId = setInterval(clockTimer, 1000);
+});
 // Click the start button:
 // Landing page goes away
 // Timer starts
