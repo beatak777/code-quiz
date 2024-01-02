@@ -52,7 +52,7 @@ function displayQuestion() {
             } 
             currentQuestionIndex++;
 
-            displayQuestions();
+            displayQuestion();
         })
         choices.append(choicesButton);
 
@@ -67,6 +67,13 @@ function clockTimer() {
         clearInterval(timerId);
         quizFinish();
     }
+};
+
+function quizFinish() {
+    questionScreen.classList.add("hide");
+    endScreen.classList.remove("hide");
+    feedback.classList.add("hide");
+    finalScore.innerText = time; 
 }
 
 startButton.addEventListener("click", function () {
@@ -78,6 +85,8 @@ startButton.addEventListener("click", function () {
     timerId = setInterval(clockTimer, 1000);
     clockTimer();
 });
+
+
 
 
 submit.addEventListener("click", function () {
