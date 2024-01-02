@@ -20,5 +20,12 @@ var questions = [
         choices: "Albert Einstein", "Niels Bohr", "Alan Turing", "Dennis Gabor",
         answer: "Dennis Gabor"
 
+    },
+    {
+        title: "What is the name of the engineer who invented the Ford T model?",
+        choices: "Harrison Ford", "Jozsef Galamb", "Henry Ford", "Arthur Paul Stern",
+        answer: "Jozsef Galamb"
+
     }
+
 ];
