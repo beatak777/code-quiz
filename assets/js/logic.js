@@ -1,12 +1,12 @@
-const startBtn = document.querySelector('#start');
-const startScrn = document.querySelector('#start-screen');
-const questionScrn = document.querySelector('#questions');
+const startButton = document.querySelector('#start');
+const startScreen = document.querySelector('#start-screen');
+const questionScreen = document.querySelector('#questions');
 const questionTitle = document.querySelector('#question-title');
 const choices = document.querySelector('#choices');
 const feedback = document.querySelector('#feedback');
 const timer = document.querySelector('#time');
 const finalScore = document.querySelector('#final-score');
-const endScrn = document.querySelector('#end-screen');
+const endScreen = document.querySelector('#end-screen');
 const submit = document.querySelector('#submit');
 const initials = document.querySelector('#initials');
 
@@ -18,60 +18,87 @@ var timerId;
 function displayQuestion() {
 
     if (currentQuestionIndex === 5) {
-        questionScrn.classList.add("hide");
-        endScrn.classList.remove("hide");
+        questionScreen.classList.add("hide");
+        endScreen.classList.remove("hide");
         return
     }
+
+    var currentQuestion = questions[currentQuestionIndex];
+
+    questionTitle.innerText = currentQuestion.title;
+    choices.innerHTML = '';
+
+    currentQuestion.choices.forEach(function (choice) {
+        const choicesButton = document.createElement("button");
+        choicesButton.innerText = choice;
+        choicesButton.addEventListener("click", function () {
+            if (currentQuestion.answer === choice) {
+                feedback.innerText = "Correct!";
+                
+                function playCorrectAudio() {
+                    var correct = new Audio("../api-code-quiz/code-quiz/assets/sfx/correct.wav");
+                    correct.play();
+                }
+                playCorrectAudio();
+
+            } else {
+                feedback.innerText = "Wrong answer!";
+                function playIncorrectAudio() {
+                    var incorrect = new Audio("../api-code-quiz/code-quiz/assets/sfx/incorrect.wav");
+                    incorrect.play();
+                    timer.textContent = time -= 10;
+                }
+                playIncorrectAudio();
+            }
+            currentQuestionIndex++;
+
+            displayQuestions();
+        })
+        choices.append(choicesButton);
+
+    })
 }
-
-var currentQuestionIndex = questions[currentQuestionIndex];
-questionTitle.innerText = currentQuestion.title;
-choices.innerHTML = '';
-
-currentQuestion.choices.forEach(function (choice) {
-    const choicesBtn = document.createElement("button");
-    choicesBtn.innerText = choice;
-    choicesBtn.addEventListener("click", function () ) {
-        if (currentQuestion.answer === choice) {
-            feedback.innerText = "Correct!" ;
-            function playCorrectAudio() {
-                var correct = new Audio("../api-code-quiz/code-quiz/assets/sfx/correct.wav");
-                correct.play();
-            }
-            playCorrectAudio();
-        
-        } else {
-            feedback.innerText = "Wrong answer!";
-            function playIncorrectAudio() {
-                var incorrect = new Audio("../api-code-quiz/code-quiz/assets/sfx/incorrect.wav");
-                incorrect.play();
-                timer.textContent = time -= 10;
-            }
-            playIncorrectAudio();
-        }
-        currentQuestionIndex++;
-        displayQuestions();
-    }
-    choices.append(choicesBtn);
-
-})
-
 function clockTimer() {
     time--;
 
     timer.textContent = time
+
     if (time <= 0 || currentQuestionIndex === 5) {
         clearInterval(timerId);
         quizFinish();
     }
 }
 
-startBtn.addEventListener("click", function () {
-startScrn.classList.add("hide");
-questionScrn.classList.remove("hide");
-displayQuestions();
-timerId = setInterval(clockTimer, 1000);
+startButton.addEventListener("click", function () {
+    startScreen.classList.add("hide");
+    endScreen.classList.add("hide");
+    questionScreen.classList.remove("hide");
+    feedback.classList.remove("hide");
+    displayQuestion();
+    timerId = setInterval(clockTimer, 1000);
+    clockTimer();
 });
+
+
+submit.addEventListener("click", function () {
+    var scoreboard = JSON.parse(localStorage.getItem("score"));
+    if (Array.isArray(scoreboard)) {
+
+    }else {
+        scoreboard = [];
+    }
+    var highscores = {
+        score: time,
+        initials: initials.value
+
+    };
+
+    scoreboard.push(highscores);
+
+    localStorage.setItem("score", JSON.stringify(scoreboard));
+    window.location.href = "highscores.html"
+    
+})
 // Click the start button:
 // Landing page goes away
 // Timer starts
