@@ -6,7 +6,11 @@
 
 
 Overview of the project:
-* 
+* 5 questions each of them with 4 options
+* highscores at the end
+* set timer that gets lowered as user chooses wrong answer
+* has the ability to clear stored data by users
+
 
 ## <a name='TableofContents'></a>Table of Contents
 
@@ -46,6 +50,13 @@ No Usage necessary.
 - Table of Contents was Created with the Visual Studio Code Extension 'Markdown TOC' available [here](https://marketplace.visualstudio.com/items?itemName=dumeng.markdown-toc).
 
 - Page created by [Bea Konya](https://github.com/beatak777).
+
+- Special thanks to my friend Shlomi Shperling.
+
+- Special thanks to [ChatGPT](https://chat.openai.com) that helped me deubg my code a few times.
+
+- I also used [WebDevSimplified](https://www.youtube.com/watch?v=iiADhChRriM) tools for this project like this one about JSON.
+
 
 ## <a name='License'></a>License
 
