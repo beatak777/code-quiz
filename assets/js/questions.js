@@ -1,7 +1,7 @@
 var questions = [
     {
         title: "Who invented the Rubik's Cube?",
-        choices:"Steve Jobs", "Marie Curie", "Erno Rubik", "Thomas Edison",
+        choices: "Steve Jobs", "Marie Curie", "Erno Rubik", "Thomas Edison",
         answer: "Erno Rubik"
     },
     {
