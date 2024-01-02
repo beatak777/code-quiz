@@ -3,14 +3,14 @@
 
 # <a name='Description'></a>Description
 
-A responsive quiz about inventors.
-
+An interactive quiz about inventors. 
 Overview of the project:
 * 5 questions each of them with 4 options
 * highscores at the end
 * set timer that gets lowered as user chooses wrong answer
 * has the ability to clear stored data by users
 
+* to add later on: sound did not work with my code therefore I removed it as I ran out of time before submission and I had computer issues as well. 
 
 ## <a name='TableofContents'></a>Table of Contents
 
@@ -30,11 +30,11 @@ Overview of the project:
 
 ## <a name='DeployedPage'></a>Deployed Page
 
-[Link to Deployed Github Page](https://beatak777.github.io//)
+[Link to Deployed Github Page](https://github.com/beatak777/code-quiz)
 
-![Deployed Page Browser View]()
+![Deployed Page Browser View](https://beatak777.github.io/code-quiz/)
 
-
+![Spanshot of the outcome](screenshot.gif)
 ## <a name='Installation'></a>Installation
 
 No Installation necessary. 
