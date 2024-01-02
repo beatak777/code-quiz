@@ -1,9 +1,9 @@
-# Code Quiz Gamw
+# Code Quiz Game About Hungarian Inventors
 
 
 # <a name='Description'></a>Description
 
-
+A responsive quiz about inventors.
 
 Overview of the project:
 * 5 questions each of them with 4 options
@@ -51,7 +51,7 @@ No Usage necessary.
 
 - Page created by [Bea Konya](https://github.com/beatak777).
 
-- Special thanks to my friend Shlomi Shperling.
+- Special thanks to my friend Shlomi S..
 
 - Special thanks to [ChatGPT](https://chat.openai.com) that helped me deubg my code a few times.
 
