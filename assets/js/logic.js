@@ -10,7 +10,6 @@ const endScreen = document.querySelector('#end-screen');
 const submit = document.querySelector('#submit');
 const initials = document.querySelector('#initials');
 
-// var intervalHandle;
 var currentQuestionIndex = 0;
 var time = 60;
 var timerId;
@@ -23,33 +22,23 @@ function displayQuestion() {
         return
     }
 
-    var currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = questions[currentQuestionIndex];
 
     questionTitle.innerText = currentQuestion.title;
     choices.innerHTML = '';
 
-    currentQuestion.choices.forEach(function (choice) {
+    currentQuestion.choices.forEach(choice => {
         const choicesButton = document.createElement("button");
         choicesButton.innerText = choice;
         choicesButton.addEventListener("click", function () {
-            if (currentQuestion.answer === choice) {
-                feedback.innerText = "Correct!";
-                
-                function playCorrectAudio() {
-                    var correct = new Audio("../api-code-quiz/code-quiz/assets/sfx/correct.wav");
-                    correct.play();
-                }
-                playCorrectAudio();
+            const isCorrect = currentQuestion.answer === choice;
 
-            } else {
-                feedback.innerText = "Wrong answer!";
-                function playIncorrectAudio() {
-                    var incorrect = new Audio("../api-code-quiz/code-quiz/assets/sfx/incorrect.wav");
-                    incorrect.play();
-                    timer.textContent = time -= 10;
-                }
-                playIncorrectAudio();
-            } 
+            feedback.innerText = isCorrect ? "Correct!" : "Wrong answer!";
+
+            const audioPath = isCorrect ? "../api-code-quiz/code-quiz/assets/sfx/correct.wav" : "../api-code-quiz/code-quiz/assets/sfx/incorrect.wav";
+            new Audio(audioPath).play();
+
+            if (!isCorrect) timer.textContent = time -= 10;
             currentQuestionIndex++;
 
             displayQuestion();
